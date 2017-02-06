@@ -27,7 +27,7 @@ public final  @Data class DutchResidentialAddress  implements Address {
 	private String houseLetter;
 	
 	/**
-	 * the denoatation. Used for objects that do not have a house number of their own. 
+	 * the denotation. Used for objects that do not have a house number of their own. 
 	 * Not used that much nowadays. In the past this was used for houseboats.
 	 */
 	private Optional<Denotation> denotation;
