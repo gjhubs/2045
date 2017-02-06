@@ -6,7 +6,25 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>brp-datamodel</name>
-  <url>http://maven.apache.org</url>
+  <description>The datamodel for the Blockchain hackathon by Team 2045</description>
+  <url>http://www.duo.nl</url>
+    <inceptionYear>2017</inceptionYear>
+  <organization>
+    <name>By Duo, Logius, Innovalor, Other</name>
+    <url>http://www.duo.nl</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>Discuss with DUO</name>
+      <distribution>As agreed upon</distribution>
+      <comments>(C) DUO 2017. As agreed upon whit DUO.</comments>
+    </license>
+  </licenses>
+  <properties>
+   <jdk.version>1.8</jdk.version>
+    <javadoc.version>2.10.4</javadoc.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -20,5 +38,181 @@
       <version>1.16.12</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+    <groupId>com.google.code.bean-matchers</groupId>
+    <artifactId>bean-matchers</artifactId>
+    <version>0.10</version>
+    <scope>test</scope>
+  </dependency>
+    <dependency>
+      <groupId>com.google.code.bean-matchers</groupId>
+      <artifactId>bean-matchers</artifactId>
+      <version>0.9</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+    <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <plugins>
+      <!-- Set JDK Compiler Level -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.2</version>
+        <configuration>
+          <source>${jdk.version}</source>
+          <target>${jdk.version}</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+        <configuration>
+          <archive>
+             <manifest>
+              <addClasspath>false</addClasspath>
+            </manifest>
+            <addMavenDescriptor>false</addMavenDescriptor>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${javadoc.version}</version>
+        <executions>
+          <execution>
+            <phase>site</phase>
+            <goals>
+              <goal>javadoc</goal>
+            </goals>
+            <configuration>
+              <!-- Specific configuration for the given reports -->
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- Default configuration for all reports -->
+          <show>public</show>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.19.1</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <!-- Use the older JUnit 4 provider -->
+            <artifactId>surefire-junit4</artifactId>
+            <version>2.19.1</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <parallel>methods</parallel>
+          <threadCount>10</threadCount>
+        </configuration>
+      </plugin>
+      <!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.17</version>
+        <executions>
+          <execution>
+            <id>validate</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <configuration>
+              <configLocation>team2045_checks.xml</configLocation>
+              <encoding>UTF-8</encoding>
+              <consoleOutput>true</consoleOutput>
+              <failOnValidation>false</failOnValidation>
+              <failOnViolation>false</failOnViolation>
+              <failsOnError>false</failsOnError>
+              <linkXRef>false</linkXRef>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.6</version>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.0.2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.7.201606060606</version>
+      </plugin>
+    </plugins>
+  </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.3</version>
+        <configuration>
+          <show>public</show>
+        </configuration>
+      </plugin>
+      <!-- <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.17</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+        <configuration>
+          <configLocation>team2045_checks.xml</configLocation>
+          <encoding>UTF-8</encoding>
+          <consoleOutput>true</consoleOutput>
+          <failOnValidation>false</failOnValidation>
+          <failOnViolation>false</failOnViolation>
+          <failsOnError>false</failsOnError>
+          <linkXRef>false</linkXRef>
+        </configuration>
+      </plugin> -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.6</version>
+        <configuration>
+          <linkXref>true</linkXref>
+          <sourceEncoding>utf-8</sourceEncoding>
+          <minimumTokens>100</minimumTokens>
+          <targetJdk>${jdk.version}</targetJdk>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.3</version>
+      </plugin>
+      <!-- <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.0.2</version>
+      </plugin> -->
+      <plugin> 
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.7.201606060606</version>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>
