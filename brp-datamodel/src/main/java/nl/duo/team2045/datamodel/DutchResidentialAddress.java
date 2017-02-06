@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import lombok.Data;
 
-public final  @Data class DutchResidentialAddress {
+public final  @Data class DutchResidentialAddress  implements Address {
 	
 	/**
 	 * A possible null street field.

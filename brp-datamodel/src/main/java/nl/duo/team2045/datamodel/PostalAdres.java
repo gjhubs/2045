@@ -7,7 +7,7 @@ import lombok.Data;
  * @author Hans Kruse
  *
  */
-public final @Data class PostalAdres {
+public final @Data class PostalAdres implements Address {
 	
 	/**
 	 * A Dutch postal code of the form NNNNNAA, where NNNN are numbers and AA are upercase charactgers A-Z.
