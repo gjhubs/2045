@@ -26,7 +26,7 @@ import com.google.code.beanmatchers.ValueGenerator;
 /**
  * Test whether the datamodel classes are proper beans.
  *
- * @author InnoValor (software@innovalor.nl)
+ * @author InnoValor 
  * @version 1.21.0
  * @since 0.0.1
  */
@@ -45,10 +45,12 @@ public final class DataBeansTest {
    };
 
    private static final String[] filteredPackageNames = { //
-         "nl.innovalor.logging.dataimpl.typewrappers" };
+		   //packages not test
+         };
 
    private static final String[] filteredPackageNamesForToString = { //
-         "nl.innovalor.logging.dataimpl.typewrappers" };
+		   //packages not to test for toString
+   };
    private static final List<Class<?>> classes = new ArrayList<>();
    private static final List<Class<?>> classesForToString = new ArrayList<>();
 
