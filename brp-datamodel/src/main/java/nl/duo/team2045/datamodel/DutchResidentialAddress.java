@@ -13,7 +13,7 @@ public final  @Data class DutchResidentialAddress  implements Address {
 	private String Street;
 	
 	/**
-	 * A Dutch postal code of the form NNNNNAA, where NNNN are numbers and AA are upercase charactgers A-Z.
+	 * A Dutch postal code of the form NNNNNAA, where NNNN are numbers and AA are uppercase characters A-Z.
 	 */
 	private String postalCode;
 	
